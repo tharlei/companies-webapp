@@ -1,16 +1,81 @@
-# Vue 3 + TypeScript + Vite
+<p align="center">
+ <img width="128" src="https://i.imgur.com/O31DxI7.png"/>
+</p>
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+<p align="center">
+  <img src="https://img.shields.io/badge/Vue-3eaf7c?style=for-the-badge&logo=vue.js&logoColor=white"/>
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+</p>
 
-## Recommended IDE Setup
+## Sumário
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+:small_blue_diamond: [Deploy](#deploy)
 
-## Type Support For `.vue` Imports in TS
+:small_blue_diamond: [Requisitos](#requisitos)
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can enable Volar's Take Over mode by following these steps:
+:small_blue_diamond: [Execute projeto](#execute-projeto)
 
-1. Run `Extensions: Show Built-in Extensions` from VS Code's command palette, look for `TypeScript and JavaScript Language Features`, then right click and select `Disable (Workspace)`. By default, Take Over mode will enable itself if the default TypeScript extension is disabled.
-2. Reload the VS Code window by running `Developer: Reload Window` from the command palette.
+:small_blue_diamond: [Tecnologias utilizadas](#tecnologias-utilizadas)
 
-You can learn more about Take Over mode [here](https://github.com/johnsoncodehk/volar/discussions/471).
+:small_blue_diamond: [Autor](#autor)
+
+:small_blue_diamond: [Licença](#licença)
+
+## Deploy
+
+> Link do WebApp: https://cupola-companies.netlify.app
+
+## Requisitos
+
+:warning: [Node:^16](https://nodejs.org/en/download/)
+
+## Execute projeto
+
+No terminal, clone o projeto
+
+```
+git clone https://github.com/tharlei/companies-webapp
+```
+
+Entre na pasta
+
+```
+cd companies-webapp
+```
+
+Instale dependências npm
+
+```
+npm i
+```
+
+Copie .env.example para .env e preencha com informações
+
+```
+cp .env.example .env
+```
+
+Execute o projeto no modo desenvolvimento
+
+```
+npm run dev
+```
+
+## Tecnologias utilizadas
+
+- [Vue.js 3](https://vuejs.org/)
+- [Vite](https://vitejs.dev/)
+- [Axios](https://axios-http.com/ptbr/)
+- [Tailwindcss](https://tailwindcss.com/)
+- [Typescript](https://www.typescriptlang.org/)
+
+## Autor
+
+[<img src="https://avatars2.githubusercontent.com/u/32899049?s=460&u=946f73939bb511fa8ae40ed80764cc4dbffe359f&v=4" width=115><br><sub>Tharlei Aleixo</sub>](https://github.com/Tharlei)
+
+## Licença
+
+The [MIT License]() (MIT)
+
+Copyright :copyright: 2022 - companies-webapp
