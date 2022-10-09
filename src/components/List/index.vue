@@ -2,6 +2,7 @@
 import { Company } from '../../services/get-companies';
 import NotFound from '../../assets/not-found.svg';
 import Card from '../Card/index.vue';
+import SkeletonCard from '../SkeletonCard/index.vue';
 
 defineProps<{
   companies: Company[];
@@ -14,7 +15,9 @@ defineProps<{
   <div v-if="!loading && companies.length" class="list-companies">
     <Card v-for="company in companies" :key="company.id" :company="company" />
   </div>
-  <div v-else-if="loading" class="list-companies"></div>
+  <div v-else-if="loading" class="list-companies">
+    <SkeletonCard v-for="i in 3" :key="i" />
+  </div>
   <div v-else class="flex flex-col justify-center items-center">
     <img
       :src="NotFound"
