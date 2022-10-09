@@ -12,7 +12,7 @@ import Home from './pages/Home/index.vue';
 @tailwind utilities;
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 input,
