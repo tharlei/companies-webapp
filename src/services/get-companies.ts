@@ -48,7 +48,7 @@ export async function getCompanies(params: Input): Promise<Response> {
   } catch {
     return {
       collection: [],
-      existsNextPage: true,
+      existsNextPage: false,
     };
   }
 }
