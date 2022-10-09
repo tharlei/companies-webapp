@@ -9,7 +9,7 @@ defineProps<{
 <template>
   <div class="border border-gray-400 rounded p-4">
     <h2 class="text-2xl">{{ company.name }}</h2>
-    <p class="mt-2 text-base text-gray-800 font-normal">
+    <p class="mt-2 text-base text-gray-800 font-normal text-justify">
       {{ company.description }}
     </p>
     <div class="flex items-center text-xl mt-8">
