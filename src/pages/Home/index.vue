@@ -20,6 +20,7 @@ const headerTitle = 'Empresas ' + new Date().getFullYear();
 const limit = 15;
 
 watch(federalUnit, async () => {
+  page.value = 1;
   const promises = [handleCompanies()];
 
   if (!federalUnit.value) {
@@ -34,10 +35,14 @@ watch(federalUnit, async () => {
 });
 
 watch(city, async () => {
+  page.value = 1;
   await handleCompanies();
 });
 
 watch(name, debounce(handleCompanies, 500));
+watch(name, () => {
+  page.value = 1;
+});
 
 onMounted(async () => {
   const [federalUnitsCollection] = await Promise.all([
@@ -76,6 +81,7 @@ function resetFilters() {
   federalUnit.value = '';
   city.value = '';
   name.value = '';
+  page.value = 1;
 }
 </script>
 
@@ -111,7 +117,10 @@ function resetFilters() {
             <label class="text-gray-500 text-base -mb-10 ml-3 z-10 font-medium">
               Estado
             </label>
-            <select v-model="federalUnit" class="form-control-custom">
+            <select
+              v-model="federalUnit"
+              class="form-control-custom cursor-pointer"
+            >
               <option value="">Todos</option>
               <option
                 v-for="item in federalUnits"
@@ -130,7 +139,9 @@ function resetFilters() {
             <select
               v-model="city"
               :disabled="!federalUnit"
-              class="form-control-custom"
+              :class="`form-control-custom ${
+                federalUnit ? 'cursor-pointer' : 'cursor-not-allowed'
+              }`"
             >
               <option value="">Todos</option>
               <option v-for="item in cities" :key="item.id" :value="item.name">
