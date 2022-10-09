@@ -4,8 +4,8 @@ import { City, getCities } from '../../services/get-cities';
 import { FederalUnit, getFederalUnits } from '../../services/get-federal-units';
 import { Company, getCompanies } from '../../services/get-companies';
 import { debounce } from '../../shared/debounce';
-import NotFound from '../../assets/not-found.svg';
-import Card from '../../components/Card/index.vue';
+import Header from '../../components/Header/index.vue';
+import List from '../../components/List/index.vue';
 
 const name = ref('');
 const page = ref(1);
@@ -17,7 +17,6 @@ const cities = ref<City[]>([]);
 const companies = ref<Company[]>([]);
 const canLoadMore = ref(false);
 
-const headerTitle = 'Empresas ' + new Date().getFullYear();
 const limit = 15;
 
 watch(federalUnit, async () => {
@@ -87,11 +86,7 @@ function resetFilters() {
 </script>
 
 <template>
-  <header className="w-full bg-gray-white py-6 px-4 lg:px-12">
-    <h1 class="font-bold text-indigo-800 text-3xl">
-      {{ headerTitle }}
-    </h1>
-  </header>
+  <Header />
   <main className="py-14 min-h-screen bg-gray-200 flex justify-center">
     <div class="container px-4 lg:px-0">
       <div class="bg-white w-full py-10 px-4 lg:px-8">
@@ -152,26 +147,11 @@ function resetFilters() {
           </div>
         </div>
 
-        <div v-if="!loading && companies.length" class="list-companies">
-          <Card
-            v-for="company in companies"
-            :key="company.id"
-            :company="company"
-          />
-        </div>
-        <div v-else-if="loading" class="list-companies"></div>
-        <div v-else class="flex flex-col justify-center items-center">
-          <img
-            :src="NotFound"
-            alt="Bixinhos mostrando interrogação, representando que não encontrou nada"
-          />
-          <p class="text-2xl text-center text-gray-800 font-medium my-8">
-            Nenhuma empresa encontrada :(
-          </p>
-          <button class="btn-custom" @click="resetFilters">
-            Limpe os filtros
-          </button>
-        </div>
+        <List
+          :companies="companies"
+          :loading="loading"
+          :reset-filters="resetFilters"
+        />
 
         <div class="flex justify-center">
           <button
@@ -189,10 +169,6 @@ function resetFilters() {
 </template>
 
 <style scoped>
-.list-companies {
-  @apply grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 mb-8 gap-8 text-indigo-400 font-semibold;
-}
-
 .btn-custom {
   @apply bg-green py-4 px-14 text-xl rounded-lg text-white font-bold;
 }
