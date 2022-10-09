@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Company } from '../../services/get-companies';
 
-const props = defineProps<{
+defineProps<{
   company: Company;
 }>();
 </script>
