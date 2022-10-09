@@ -5,6 +5,7 @@ import { FederalUnit, getFederalUnits } from '../../services/get-federal-units';
 import { Company, getCompanies } from '../../services/get-companies';
 import { debounce } from '../../shared/debounce';
 import NotFound from '../../assets/not-found.svg';
+import Card from '../../components/Card/index.vue';
 
 const name = ref('');
 const page = ref(1);
@@ -152,31 +153,11 @@ function resetFilters() {
         </div>
 
         <div v-if="!loading && companies.length" class="list-companies">
-          <div
+          <Card
             v-for="company in companies"
             :key="company.id"
-            class="border border-gray-400 rounded p-4"
-          >
-            <h2 class="text-2xl">{{ company.name }}</h2>
-            <p class="mt-2 text-base text-gray-800 font-normal">
-              {{ company.description }}
-            </p>
-            <div class="flex items-center text-xl mt-8">
-              <a
-                target="_blank"
-                rel="noreferrer"
-                :href="`mailto:${company.email}`"
-                class="mr-8"
-                >Enviar email</a
-              >
-              <a
-                target="_blank"
-                rel="noreferrer"
-                :href="`https://wa.me/${company.phone}`"
-                >Whatsapp</a
-              >
-            </div>
-          </div>
+            :company="company"
+          />
         </div>
         <div v-else-if="loading" class="list-companies"></div>
         <div v-else class="flex flex-col justify-center items-center">
